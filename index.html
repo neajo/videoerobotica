@@ -476,6 +476,34 @@
       position: relative;
     }
 
+    .video-player {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    .upload-area {
+      border: 2px dashed var(--primary);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      background: var(--dark-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .upload-area:hover {
+      border-color: var(--secondary);
+      background: rgba(0, 255, 136, 0.1);
+    }
+
+    .upload-area.dragover {
+      border-color: var(--accent);
+      background: rgba(255, 107, 53, 0.1);
+    }
+
     .close-modal {
       position: absolute;
       top: 10px;
@@ -527,7 +555,7 @@
       </h2>
       
       <div class="videos-grid">
-        <div class="video-card fade-in" onclick="openVideo('Arduino Robótica Avançada')">
+        <div class="video-card fade-in" onclick="openVideo('Arduino Robótica Avançada', 'youtube', 'dQw4w9WgXcQ')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -543,7 +571,7 @@
           </div>
         </div>
 
-        <div class="video-card fade-in" onclick="openVideo('Inteligência Artificial em Robôs')">
+        <div class="video-card fade-in" onclick="openVideo('Inteligência Artificial em Robôs', 'youtube', 'ScMzIvxBSi4')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -559,7 +587,7 @@
           </div>
         </div>
 
-        <div class="video-card fade-in" onclick="openVideo('Sensores e Atuadores')">
+        <div class="video-card fade-in" onclick="openVideo('Sensores e Atuadores', 'local', './videos/sensores.mp4')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -575,7 +603,7 @@
           </div>
         </div>
 
-        <div class="video-card fade-in" onclick="openVideo('Robôs Humanoides')">
+        <div class="video-card fade-in" onclick="openVideo('Robôs Humanoides', 'vimeo', '123456789')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -591,7 +619,7 @@
           </div>
         </div>
 
-        <div class="video-card fade-in" onclick="openVideo('Programação ROS')">
+        <div class="video-card fade-in" onclick="openVideo('Programação ROS', 'youtube', 'jzOhKnFE9lA')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -607,7 +635,7 @@
           </div>
         </div>
 
-        <div class="video-card fade-in" onclick="openVideo('Visão Computacional')">
+        <div class="video-card fade-in" onclick="openVideo('Visão Computacional', 'local', './videos/opencv.mp4')">
           <div class="video-thumbnail">
             <div class="play-button">
               <i class="fas fa-play"></i>
@@ -730,17 +758,42 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeVideo()">&times;</span>
       <h3 id="modalTitle">Título do Vídeo</h3>
-      <p style="color: var(--text-dim); margin-top: 1rem;">
-        Este é um placeholder para o vídeo. Em um site real, aqui seria incorporado o player de vídeo do YouTube, Vimeo ou outro serviço.
-      </p>
-      <div style="margin-top: 2rem; padding: 2rem; background: var(--dark-light); border-radius: 10px; text-align: center;">
-        <i class="fas fa-video" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
-        <p>🎬 Vídeo seria carregado aqui</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
-          Para implementar vídeos reais, substitua este conteúdo por um iframe do YouTube ou player personalizado.
-        </p>
+      
+      <!-- Player de Vídeo -->
+      <div id="videoContainer">
+        <!-- Conteúdo do vídeo será carregado aqui -->
+      </div>
+      
+      <!-- Área de Upload (Admin) -->
+      <div id="uploadSection" style="display: none; margin-top: 2rem;">
+        <h4 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="fas fa-upload"></i> Upload de Vídeo
+        </h4>
+        
+        <div class="upload-area" id="uploadArea">
+          <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+          <p>Arraste e solte um vídeo aqui ou clique para selecionar</p>
+          <input type="file" id="videoInput" accept="video/*" style="display: none;">
+          <button onclick="document.getElementById('videoInput').click()" style="margin-top: 1rem; padding: 10px 20px; background: var(--primary); color: var(--dark); border: none; border-radius: 5px; cursor: pointer;">
+            Escolher Arquivo
+          </button>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+          <label>URL do YouTube:</label>
+          <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." style="width: 100%; padding: 10px; margin-top: 5px; background: var(--dark-light); border: 1px solid var(--primary); border-radius: 5px; color: var(--text);">
+        </div>
+        
+        <button onclick="addVideo()" style="margin-top: 1rem; padding: 10px 20px; background: var(--secondary); color: var(--dark); border: none; border-radius: 5px; cursor: pointer;">
+          <i class="fas fa-plus"></i> Adicionar Vídeo
+        </button>
       </div>
     </div>
+  </div>
+
+  <!-- Botão Admin (oculto) -->
+  <div id="adminBtn" style="position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; padding: 15px; border-radius: 50%; cursor: pointer; display: none; z-index: 1000;" onclick="toggleAdmin()">
+    <i class="fas fa-cog"></i>
   </div>
 
   <script>
@@ -760,16 +813,202 @@
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
 
-    // Modal de vídeo
-    function openVideo(title) {
+    // Modal de vídeo com suporte a múltiplas fontes
+    function openVideo(title, type = 'youtube', source = '') {
       document.getElementById('modalTitle').textContent = title;
       document.getElementById('videoModal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      
+      const container = document.getElementById('videoContainer');
+      
+      switch(type) {
+        case 'youtube':
+          // Extrai ID do YouTube
+          const videoId = source.includes('youtube.com') ? 
+            source.split('v=')[1]?.split('&')[0] : source;
+          container.innerHTML = `
+            <iframe class="video-player" 
+              src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>`;
+          break;
+          
+        case 'vimeo':
+          container.innerHTML = `
+            <iframe class="video-player" 
+              src="https://player.vimeo.com/video/${source}?autoplay=1" 
+              frameborder="0" 
+              allow="autoplay; fullscreen; picture-in-picture" 
+              allowfullscreen>
+            </iframe>`;
+          break;
+          
+        case 'local':
+          container.innerHTML = `
+            <video class="video-player" controls autoplay>
+              <source src="${source}" type="video/mp4">
+              <source src="${source.replace('.mp4', '.webm')}" type="video/webm">
+              Seu navegador não suporta vídeo HTML5.
+            </video>`;
+          break;
+          
+        case 'stream':
+          container.innerHTML = `
+            <video class="video-player" controls autoplay>
+              <source src="${source}" type="application/x-mpegURL">
+              Stream não suportado pelo navegador.
+            </video>`;
+          break;
+          
+        default:
+          container.innerHTML = `
+            <div style="padding: 2rem; background: var(--dark-light); border-radius: 10px; text-align: center;">
+              <i class="fas fa-video" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+              <p>🎬 Vídeo: ${title}</p>
+              <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+                Fonte não especificada. Configure a fonte do vídeo.
+              </p>
+            </div>`;
+      }
     }
 
     function closeVideo() {
       document.getElementById('videoModal').style.display = 'none';
       document.body.style.overflow = 'auto';
+      document.getElementById('videoContainer').innerHTML = '';
+    }
+
+    // Sistema de upload de vídeos
+    let isAdmin = false;
+
+    function toggleAdmin() {
+      isAdmin = !isAdmin;
+      document.getElementById('uploadSection').style.display = 
+        isAdmin ? 'block' : 'none';
+      
+      if (isAdmin) {
+        console.log('🔐 Modo Admin ativado!');
+      }
+    }
+
+    // Habilita modo admin com combinação de teclas
+    let keySequence = '';
+    document.addEventListener('keydown', function(e) {
+      keySequence += e.key.toLowerCase();
+      if (keySequence.includes('admin')) {
+        document.getElementById('adminBtn').style.display = 'block';
+        keySequence = '';
+        console.log('🔑 Botão admin desbloqueado! Digite "admin"');
+      }
+      if (keySequence.length > 10) keySequence = '';
+    });
+
+    // Upload de arquivos
+    document.addEventListener('DOMContentLoaded', function() {
+      const uploadArea = document.getElementById('uploadArea');
+      const fileInput = document.getElementById('videoInput');
+
+      if (uploadArea) {
+        uploadArea.addEventListener('click', () => fileInput.click());
+        
+        uploadArea.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+          uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+          e.preventDefault();
+          uploadArea.classList.remove('dragover');
+          const files = e.dataTransfer.files;
+          handleVideoUpload(files[0]);
+        });
+      }
+
+      if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+          handleVideoUpload(e.target.files[0]);
+        });
+      }
+    });
+
+    function handleVideoUpload(file) {
+      if (!file || !file.type.startsWith('video/')) {
+        alert('❌ Por favor, selecione um arquivo de vídeo válido!');
+        return;
+      }
+
+      console.log('📹 Upload do vídeo:', file.name);
+      console.log('📊 Tamanho:', (file.size / 1024 / 1024).toFixed(2) + ' MB');
+      
+      // Simula upload
+      const progress = document.createElement('div');
+      progress.style.cssText = `
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        background: var(--dark); padding: 2rem; border-radius: 10px;
+        border: 2px solid var(--primary); z-index: 10001; text-align: center;
+      `;
+      
+      let percent = 0;
+      progress.innerHTML = `
+        <h3 style="color: var(--primary);">📤 Fazendo Upload...</h3>
+        <p>${file.name}</p>
+        <div style="width: 200px; height: 10px; background: var(--dark-light); border-radius: 5px; margin: 1rem auto;">
+          <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); border-radius: 5px; transition: width 0.3s ease;"></div>
+        </div>
+        <p id="progressText">0%</p>
+      `;
+      
+      document.body.appendChild(progress);
+      
+      const interval = setInterval(() => {
+        percent += Math.random() * 15;
+        if (percent >= 100) {
+          percent = 100;
+          clearInterval(interval);
+          
+          setTimeout(() => {
+            document.body.removeChild(progress);
+            alert('✅ Vídeo enviado com sucesso!');
+            
+            // Cria URL local temporária para preview
+            const url = URL.createObjectURL(file);
+            openVideo(file.name, 'local', url);
+          }, 500);
+        }
+        
+        document.getElementById('progressBar').style.width = percent + '%';
+        document.getElementById('progressText').textContent = Math.round(percent) + '%';
+      }, 100);
+    }
+
+    function addVideo() {
+      const youtubeUrl = document.getElementById('youtubeUrl').value;
+      
+      if (!youtubeUrl) {
+        alert('❌ Por favor, insira uma URL do YouTube!');
+        return;
+      }
+      
+      if (!youtubeUrl.includes('youtube.com') && !youtubeUrl.includes('youtu.be')) {
+        alert('❌ URL do YouTube inválida!');
+        return;
+      }
+      
+      // Simula adição de vídeo
+      alert('✅ Vídeo do YouTube adicionado com sucesso!');
+      console.log('📺 Novo vídeo adicionado:', youtubeUrl);
+      
+      // Limpa o campo
+      document.getElementById('youtubeUrl').value = '';
+      
+      // Teste o vídeo
+      openVideo('Novo Vídeo', 'youtube', youtubeUrl);
     }
 
     // Fecha modal ao clicar fora
