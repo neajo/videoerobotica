@@ -1,26 +1,7 @@
-
-body {
-    /* Define a cor do texto para branco (hex: #ffffff) */
-    color: white;
-    
-    /* Define a cor de fundo da página para preto (hex: #000000) */
-    background: black;
-    
-    /* Remove todas as margens externas padrão do navegador */
-    margin: 0;
-    
-    /* 
-      Define a família de fontes:
-      1. Tenta usar "Charas Petch" como fonte principal
-      2. Se não estiver disponível, usa qualquer fonte sans-serif
-      Obs: "Charas Petch" precisa ser importada (ex: Google Fonts) 
-    */
-    font-family: "Charas Petch", sans-serif;
-    
-    /* 
-      Adiciona uma margem inferior de 100 pixels:
-      - Cria espaço extra abaixo do conteúdo da página
-      - Útil para evitar que o conteúdo fique colado no rodapé
-    */
-    margin-bottom: 100px;
+body {          
+    color: white;              /* definido a cor do texto como branco */
+    background: black;         /*define a cor do fundo da página na cor preta */
+    margin: 100px;                  /*Zera o espaço próximo a margem da página */
+    font-family: "Times New Roman", sans-serif;   /* Alterar a fonte do Texto */
+    margin-bottom: 470px;         /* Ajustar a margem inferior da Página*/
 }
