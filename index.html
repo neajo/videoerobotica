@@ -4,10 +4,148 @@
     <meta charset="UTF-8"> <!-- Define o conjunto de caracteres para suportar acentuação -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta a página para ser responsiva em dispositivos móveis -->
     <title>Site Robótica</title> <!-- Título que aparece na aba do navegador -->
-    <link rel="stylesheet" href="style.css"> <!-- Faz a ligação com um arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css"> <!-- Faz a ligação com um arquivo CSS externo (opcional; pode deixar vazio) -->
 </head>
 
 <body> <!-- Corpo da página, onde fica o conteúdo visível para o usuário -->
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>Robótica • Vídeos</h1>
+        <p>Uma coletânea de vídeos sobre robótica, programação e IA — clique e assista no YouTube.</p>
+        <!-- Dica: você pode criar um style.css depois para estilizar tudo isso. Aqui é somente HTML. -->
+    </header>
+
+    <!-- NAVEGAÇÃO SIMPLES (APENAS LINKS) -->
+    <nav>
+        <a href="#destaques">Destaques</a> |
+        <a href="#iniciante">Para iniciantes</a> |
+        <a href="#avancado">Avançado</a> |
+        <a href="#canais">Canais e playlists</a>
+    </nav>
+
+    <main>
+
+        <!-- SEÇÃO: DESTAQUES -->
+        <section id="destaques">
+            <h2>🎯 Destaques</h2>
+
+            <!--
+              COMO USAR:
+              1) Pegue o ID do vídeo no YouTube (em https://youtube.com/watch?v=VIDEO_ID).
+              2) Substitua VIDEO_ID_AQUI no href e no src da imagem.
+              3) Opcional: mude o texto do figcaption para o título do vídeo.
+              A miniatura é carregada de: https://img.youtube.com/vi/ID/hqdefault.jpg
+            -->
+
+            <div class="grade">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 1">
+                        <figcaption>Introdução à Robótica — O que é e por onde começar</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 2">
+                        <figcaption>Arduino em 10 minutos: primeiros passos</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 3">
+                        <figcaption>Raspberry Pi: ideias de projetos robóticos</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 4">
+                        <figcaption>Sensores e atuadores: como funcionam</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: INICIANTE -->
+        <section id="iniciante">
+            <h2>🌱 Para iniciantes</h2>
+            <div class="grade">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Curso básico de Arduino">
+                        <figcaption>Curso básico de Arduino</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Programando motores DC e Servo">
+                        <figcaption>Programando motores DC/Servo</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Linha-seguidor">
+                        <figcaption>Robô seguidor de linha (passo a passo)</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: AVANÇADO -->
+        <section id="avancado">
+            <h2>🧠 Avançado</h2>
+            <div class="grade">
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="ROS básico">
+                        <figcaption>ROS (Robot Operating System) — fundamentos</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Visão computacional">
+                        <figcaption>Visão computacional para robótica</figcaption>
+                    </figure>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
+                    <figure>
+                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="SLAM e navegação">
+                        <figcaption>SLAM e navegação autônoma</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CANAIS E PLAYLISTS (LINK DIRETO, SEM MINIATURA) -->
+        <section id="canais">
+            <h2>📺 Canais e Playlists recomendados</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/results?search_query=rob%C3%B3tica" target="_blank" rel="noopener">Busca: “robótica” no YouTube</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=arduino+rob%C3%B3tica" target="_blank" rel="noopener">Busca: “arduino robótica”</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=ros+robotics" target="_blank" rel="noopener">Busca: “ROS robotics”</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=vis%C3%A3o+computacional+rob%C3%B3tica" target="_blank" rel="noopener">Busca: “visão computacional robótica”</a></li>
+            </ul>
+            <!-- Você pode trocar os links acima por canais e playlists específicos que gostar. -->
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>© <span id="ano">2025</span> • Robótica Vídeos • Feito em HTML puro</p>
+    </footer>
+
+    <!-- Apenas HTML: o script abaixo só preenche o ano automaticamente (pode remover se quiser) -->
+    <script>
+        document.getElementById('ano').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html> <!-- Fim do documento HTML -->
