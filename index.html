@@ -1,151 +1,564 @@
-<!DOCTYPE html> <!-- Define que o documento segue o padrão HTML5 -->
-<html lang="pt-br"> <!-- Define o idioma principal da página como português do Brasil -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres para suportar acentuação -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta a página para ser responsiva em dispositivos móveis -->
-    <title>Site Robótica</title> <!-- Título que aparece na aba do navegador -->
-    <link rel="stylesheet" href="style.css"> <!-- Faz a ligação com um arquivo CSS externo (opcional; pode deixar vazio) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechRobo - Vídeos de Robótica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #f0f6fc;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0d47a1, #006978);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #e0f7fa;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: #4fc3f7;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .search-bar {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            background-color: #1e293b;
+            color: white;
+        }
+        
+        .search-bar button {
+            padding: 12px 20px;
+            background-color: #4fc3f7;
+            color: #0a0e17;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #29b6f6;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23151f30" width="100" height="100"/><path fill="%23212e40" d="M0 0L100 100M100 0L0 100" stroke-width="0.5"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4fc3f7;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #c5d5e0;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: rgba(79, 195, 247, 0.2);
+            color: #4fc3f7;
+            border: 1px solid #4fc3f7;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover {
+            background-color: #4fc3f7;
+            color: #0a0e17;
+        }
+        
+        .videos-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #4fc3f7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .video-card {
+            background-color: #1a2235;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-thumb {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-card:hover .video-thumb img {
+            transform: scale(1.05);
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: white;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .video-channel {
+            font-size: 0.9rem;
+            color: #9eacbc;
+            margin-bottom: 8px;
+        }
+        
+        .video-metadata {
+            display: flex;
+            justify-content: space-between;
+            color: #7b8a9b;
+            font-size: 0.85rem;
+        }
+        
+        .load-more {
+            display: block;
+            margin: 40px auto;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #4fc3f7;
+            border: 2px solid #4fc3f7;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .load-more:hover {
+            background-color: #4fc3f7;
+            color: #0a0e17;
+        }
+        
+        footer {
+            background-color: #070b15;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #4fc3f7;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #9eacbc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #4fc3f7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1a2235;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #4fc3f7;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #1a2235;
+            color: #7b8a9b;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
 </head>
 
-<body> <!-- Corpo da página, onde fica o conteúdo visível para o usuário -->
-
-    <!-- CABEÇALHO -->
+<body>
     <header>
-        <h1>Robótica • Vídeos</h1>
-        <p>Uma coletânea de vídeos sobre robótica, programação e IA — clique e assista no YouTube.</p>
-        <!-- Dica: você pode criar um style.css depois para estilizar tudo isso. Aqui é somente HTML. -->
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <h1>TechRobo</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Categorias</a></li>
+                        <li><a href="#">Populares</a></li>
+                        <li><a href="#">Novos</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar vídeos de robótica...">
+                <button>Buscar</button>
+            </div>
+        </div>
     </header>
 
-    <!-- NAVEGAÇÃO SIMPLES (APENAS LINKS) -->
-    <nav>
-        <a href="#destaques">Destaques</a> |
-        <a href="#iniciante">Para iniciantes</a> |
-        <a href="#avancado">Avançado</a> |
-        <a href="#canais">Canais e playlists</a>
-    </nav>
-
-    <main>
-
-        <!-- SEÇÃO: DESTAQUES -->
-        <section id="destaques">
-            <h2>🎯 Destaques</h2>
-
-            <!--
-              COMO USAR:
-              1) Pegue o ID do vídeo no YouTube (em https://youtube.com/watch?v=VIDEO_ID).
-              2) Substitua VIDEO_ID_AQUI no href e no src da imagem.
-              3) Opcional: mude o texto do figcaption para o título do vídeo.
-              A miniatura é carregada de: https://img.youtube.com/vi/ID/hqdefault.jpg
-            -->
-
-            <div class="grade">
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 1">
-                        <figcaption>Introdução à Robótica — O que é e por onde começar</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 2">
-                        <figcaption>Arduino em 10 minutos: primeiros passos</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 3">
-                        <figcaption>Raspberry Pi: ideias de projetos robóticos</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Vídeo de robótica 4">
-                        <figcaption>Sensores e atuadores: como funcionam</figcaption>
-                    </figure>
-                </a>
+    <section class="hero">
+        <div class="container">
+            <h2>Explore o Mundo da Robótica</h2>
+            <p>Descubra os melhores vídeos, tutoriais e inovações em robótica de todo o mundo. Aprenda, inspire-se e acompanhe as últimas tendências tecnológicas.</p>
+            <div class="categories">
+                <button class="category-btn">Robótica Educacional</button>
+                <button class="category-btn">IA e Robótica</button>
+                <button class="category-btn">Robótica Industrial</button>
+                <button class="category-btn">Drones</button>
+                <button class="category-btn">Robótica Médica</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SEÇÃO: INICIANTE -->
-        <section id="iniciante">
-            <h2>🌱 Para iniciantes</h2>
-            <div class="grade">
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Curso básico de Arduino">
-                        <figcaption>Curso básico de Arduino</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Programando motores DC e Servo">
-                        <figcaption>Programando motores DC/Servo</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Linha-seguidor">
-                        <figcaption>Robô seguidor de linha (passo a passo)</figcaption>
-                    </figure>
-                </a>
+    <section class="videos-section container">
+        <h2 class="section-title">Vídeos em Destaque</h2>
+        <div class="videos-grid">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23347aaf' width='400' height='200'/><circle fill='%234fc3f7' cx='200' cy='100' r='50'/><path fill='%23ffffff' d='M180 80 L180 120 L220 100 Z'/></svg>" alt="Robótica Avançada">
+                    <div class="video-duration">15:30</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Os avanços da robótica em 2023 - O futuro chegou</h3>
+                    <p class="video-channel">Tech Innovations</p>
+                    <div class="video-metadata">
+                        <span>25K visualizações</span>
+                        <span>há 2 semanas</span>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- SEÇÃO: AVANÇADO -->
-        <section id="avancado">
-            <h2>🧠 Avançado</h2>
-            <div class="grade">
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="ROS básico">
-                        <figcaption>ROS (Robot Operating System) — fundamentos</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="Visão computacional">
-                        <figcaption>Visão computacional para robótica</figcaption>
-                    </figure>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=VIDEO_ID_AQUI" target="_blank" rel="noopener">
-                    <figure>
-                        <img src="https://img.youtube.com/vi/VIDEO_ID_AQUI/hqdefault.jpg" alt="SLAM e navegação">
-                        <figcaption>SLAM e navegação autônoma</figcaption>
-                    </figure>
-                </a>
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23558b2f' width='400' height='200'/><rect fill='%238bc34a' x='100' y='50' width='200' height='100' rx='10'/><circle fill='%23795548' cx='150' cy='100' r='20'/><circle fill='%23795548' cx='250' cy='100' r='20'/></svg>" alt="Robô Caseiro">
+                    <div class="video-duration">22:15</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Como construir um robô em casa com Arduino - Tutorial completo</h3>
+                    <p class="video-channel">Maker Lab</p>
+                    <div class="video-metadata">
+                        <span>128K visualizações</span>
+                        <span>há 1 mês</span>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <!-- SEÇÃO: CANAIS E PLAYLISTS (LINK DIRETO, SEM MINIATURA) -->
-        <section id="canais">
-            <h2>📺 Canais e Playlists recomendados</h2>
-            <ul>
-                <li><a href="https://www.youtube.com/results?search_query=rob%C3%B3tica" target="_blank" rel="noopener">Busca: “robótica” no YouTube</a></li>
-                <li><a href="https://www.youtube.com/results?search_query=arduino+rob%C3%B3tica" target="_blank" rel="noopener">Busca: “arduino robótica”</a></li>
-                <li><a href="https://www.youtube.com/results?search_query=ros+robotics" target="_blank" rel="noopener">Busca: “ROS robotics”</a></li>
-                <li><a href="https://www.youtube.com/results?search_query=vis%C3%A3o+computacional+rob%C3%B3tica" target="_blank" rel="noopener">Busca: “visão computacional robótica”</a></li>
-            </ul>
-            <!-- Você pode trocar os links acima por canais e playlists específicos que gostar. -->
-        </section>
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%237e57c2' width='400' height='200'/><rect fill='%23b39ddb' x='50' y='30' width='300' height='140' rx='10'/><circle fill='%235c6bc0' cx='120' cy='100' r='30'/><circle fill='%235c6bc0' cx='280' cy='100' r='30'/></svg>" alt="IA e Robótica">
+                    <div class="video-duration">18:42</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Inteligência Artificial aplicada à robótica - Como começar</h3>
+                    <p class="video-channel">AI Revolution</p>
+                    <div class="video-metadata">
+                        <span>42K visualizações</span>
+                        <span>há 3 semanas</span>
+                    </div>
+                </div>
+            </div>
 
-    </main>
+            <!-- Video 4 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23e65100' width='400' height='200'/><polygon fill='%23ff9800' points='200,40 240,120 160,120'/><rect fill='%23ff9800' x='180' y='120' width='40' height='40'/></svg>" alt="Robótica Industrial">
+                    <div class="video-duration">12:05</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Visita à fábrica automatizada: robótica industrial em ação</h3>
+                    <p class="video-channel">IndTech</p>
+                    <div class="video-metadata">
+                        <span>56K visualizações</span>
+                        <span>há 5 dias</span>
+                    </div>
+                </div>
+            </div>
 
-    <!-- RODAPÉ -->
+            <!-- Video 5 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%2300695c' width='400' height='200'/><circle fill='%2300bfa5' cx='200' cy='100' r='60'/><rect fill='%23ffffff' x='170' y='70' width='60' height='20' rx='5'/></svg>" alt="Drones">
+                    <div class="video-duration">09:27</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Drones autônomos: como funcionam os algoritmos de navegação</h3>
+                    <p class="video-channel">Drone Tech</p>
+                    <div class="video-metadata">
+                        <span>33K visualizações</span>
+                        <span>há 2 dias</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23c2185b' width='400' height='200'/><rect fill='%23ec407a' x='120' y='40' width='160' height='120' rx='10'/><circle fill='%23ffffff' cx='160' cy='100' r='20'/><circle fill='%23ffffff' cx='240' cy='100' r='20'/></svg>" alt="Robótica Médica">
+                    <div class="video-duration">14:38</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Robótica médica: cirurgias assistidas por robôs</h3>
+                    <p class="video-channel">MedTech Innovations</p>
+                    <div class="video-metadata">
+                        <span>47K visualizações</span>
+                        <span>há 1 semana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="load-more">Carregar Mais Vídeos</button>
+    </section>
+
+    <section class="videos-section container">
+        <h2 class="section-title">Vídeos Recentes</h2>
+        <div class="videos-grid">
+            <!-- Video 7 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23303f9f' width='400' height='200'/><rect fill='%237982c3' x='50' y='50' width='300' height='100' rx='10'/><rect fill='%23424242' x='150' y='70' width='100' height='60' rx='5'/></svg>" alt="Robótica para Iniciantes">
+                    <div class="video-duration">20:10</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Introdução à robótica para iniciantes - Primeiros passos</h3>
+                    <p class="video-channel">Robotics Academy</p>
+                    <div class="video-metadata">
+                        <span>18K visualizações</span>
+                        <span>há 3 dias</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 8 -->
+            <div class="video-card">
+                <div class="video-thumb">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23795548' width='400' height='200'/><circle fill='%23bcaaa4' cx='200' cy='100' r='50'/><rect fill='%23ffffff' x='180' y='80' width='40' height='40' rx='5'/></svg>" alt="Competição de Robótica">
+                    <div class="video-duration">25:45</div>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Competição de robótica 2023 - Melhores momentos</h3>
+                    <p class="video-channel">RoboChampionship</p>
+                    <div class="video-metadata">
+                        <span>62K visualizações</span>
+                        <span>há 4 dias</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>© <span id="ano">2025</span> • Robótica Vídeos • Feito em HTML puro</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre o TechRobo</h3>
+                    <p>O TechRobo é a principal plataforma para entusiastas de robótica descobrirem e compartilharem os melhores vídeos do segmento.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <a href="#">Início</a>
+                    <a href="#">Categorias</a>
+                    <a href="#">Vídeos em Alta</a>
+                    <a href="#">Canais Parceiros</a>
+                    <a href="#">Diretrizes da Comunidade</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <a href="mailto:contato@techrobo.com">contato@techrobo.com</a>
+                    <a href="#">Trabalhe Conosco</a>
+                    <a href="#">Parcerias</a>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-icon">FB</a>
+                        <a href="#" class="social-icon">IG</a>
+                        <a href="#" class="social-icon">YT</a>
+                        <a href="#" class="social-icon">TW</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechRobo - Todos os direitos reservados</p>
+            </div>
+        </div>
     </footer>
-
-    <!-- Apenas HTML: o script abaixo só preenche o ano automaticamente (pode remover se quiser) -->
-    <script>
-        document.getElementById('ano').textContent = new Date().getFullYear();
-    </script>
-
 </body>
-</html> <!-- Fim do documento HTML -->
+</html>
