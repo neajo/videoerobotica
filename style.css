@@ -1,27 +1,35 @@
-body {          
-    color: white;              /* definido a cor do texto como branco */
-    background: black;         /*define a cor do fundo da página na cor preta */
-    margin: 100px;                  /*Zera o espaço próximo a margem da página */
-    font-family: "Times New Roman", sans-serif;   /* Alterar a fonte do Texto */
-    margin-bottom: 470px;         /* Ajustar a margem inferior da Página*/
+body {
+  color: white; /Define a cor do texto como branco/
+  background: black;/Define a cor de fundo como preto/
+  margin: 0px; /espaço externo de um elemento./
+  font-family: "Chakra Petch" , sans-serif; /Define que o navegador deve usar a fonte "Chakra Petch" (se estiver disponível no sistema ou carregada via @font-face)./
+  margin-bottom: 100px; /*Adiciona um espaço de 100 pixels abaixo do elemento.
+                        Não afeta o conteúdo interno, apenas o espaçamento externo.*/
 }
 
+
+
+/* === SEÇÃO "CHAMADA" (container principal) === */
 .chamada {
-    background: rgb(184, 156, 213); /* Cor de fundo lilás */
-    padding-bottom: 80px; /* Espaçamento inferior */
-    padding-top: 80px; /* Espaçamento superior */
-    display: flex; /* Ativa layout flexível */
-    justify-content: center; /* Centraliza os elementos no eixo horizontal */
+    background: rgb(184, 156, 213); /* Cor de fundo roxa clara */
+    padding-bottom: 80px; /* Espaço interno na parte de baixo (80px) */
+    padding-top: 80px; /* Espaço interno no topo (80px) */
+    display: flex; /* Ativa o layout Flexbox para alinhar itens */
+    justify-content: center; /* Centraliza os itens horizontalmente */
 }
 
+/* === TEXTO DENTRO DA "CHAMADA" === */
 .chamada-texto {
-    margin-right: 5%; /* Espaço à direita do texto */
+    margin-right: 5%; /* Margem à direita (5% da largura do container) */
 }
 
+/* === ESTILOS PARA TÍTULOS (h1) === */
 h1 {
-    font-size: 40px; /* Tamanho da fonte do título */
+    font-size: 40px; /* Tamanho da fonte grande (40px) */
 }
 
+/* === ESTILOS PARA PARÁGRAFOS (p) === */
 p {
-    font-size: 20px; /* Tamanho da fonte do parágrafo */
+    font-size: 20px; /* Tamanho da fonte médio (20px) */
+}
 }
