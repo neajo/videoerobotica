@@ -4,178 +4,61 @@
     <meta charset="UTF-8"> <!-- Define o conjunto de caracteres para suportar acentuação -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta a página para ser responsiva em dispositivos móveis -->
     <title>Site Robótica</title> <!-- Título que aparece na aba do navegador -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        .video-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .video-item h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .video-item p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        iframe {
-            width: 100%;
-            height: 250px;
-            border: none;
-            border-radius: 5px;
-        }
-        .category {
-            margin-bottom: 50px;
-        }
-        .category h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Faz a ligação com um arquivo CSS externo -->
 </head>
+
 <body> <!-- Corpo da página, onde fica o conteúdo visível para o usuário -->
-    <div class="container">
-        <h1>🤖 Portal de Robótica - Vídeos Educativos</h1>
+    <header>
+        <h1>Site de Vídeos de Robótica</h1>
+        <p>Explore vídeos incríveis sobre robôs e tecnologia do YouTube!</p>
+    </header>
+    
+    <main>
+        <section class="video-container">
+            <h2>1. Do You Love Me? - Boston Dynamics</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fn3KWM1kuAw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Robôs dançando de forma impressionante.</p>
+        </section>
         
-        <div class="category">
-            <h2>Introdução à Robótica</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>O que é Robótica?</h3>
-                    <p>Uma introdução completa ao mundo da robótica, suas aplicações e importância.</p>
-                    <iframe src="https://www.youtube.com/embed/nI-8QDmqx_0" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>História da Robótica</h3>
-                    <p>Conheça a evolução dos robôs desde os primeiros autômatos até os dias atuais.</p>
-                    <iframe src="https://www.youtube.com/embed/4VTvzHW7lrY" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Componentes Básicos de um Robô</h3>
-                    <p>Aprenda sobre sensores, atuadores, processadores e outros componentes fundamentais.</p>
-                    <iframe src="https://www.youtube.com/embed/0TahbOKWurs" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
+        <section class="video-container">
+            <h2>2. Farewell to HD Atlas - Boston Dynamics</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-9EM5_VFlt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Despedida do robô Atlas HD.</p>
+        </section>
+        
+        <section class="video-container">
+            <h2>3. All New Atlas - Boston Dynamics</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/29ECwExc-_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Apresentação da nova geração do robô Atlas.</p>
+        </section>
+        
+        <section class="video-container">
+            <h2>4. Introducing Helix</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z3yQHYNXPws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Modelo de IA para robótica com visão, linguagem e ação.</p>
+        </section>
+        
+        <section class="video-container">
+            <h2>5. Unitree G1 Humanoid Robot Kip-Up</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Nkh6RUocD8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Robô humanóide realizando movimentos ágeis.</p>
+        </section>
+        
+        <section class="video-container">
+            <h2>6. Parkour Atlas - Boston Dynamics</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SD6Okylclb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Atlas fazendo parkour.</p>
+        </section>
+        
+        <section class="video-container">
+            <h2>7. Spot's Got an Arm! - Boston Dynamics</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kHBcVlqrP54" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>Robô Spot dançando e usando braço.</p>
+        </section>
+    </main>
 
-        <div class="category">
-            <h2>Arduino e Microcontroladores</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>Primeiros Passos com Arduino</h3>
-                    <p>Tutorial básico para começar a programar com Arduino do zero.</p>
-                    <iframe src="https://www.youtube.com/embed/_LZDBCStpoE" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Controlando Servomotores</h3>
-                    <p>Como programar e controlar servomotores usando Arduino.</p>
-                    <iframe src="https://www.youtube.com/embed/qOuG17k5pWU" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Sensores Ultrassônicos</h3>
-                    <p>Aprenda a usar sensores de distância em seus projetos robóticos.</p>
-                    <iframe src="https://www.youtube.com/embed/6F1B_N6LuKw" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <h2>Robótica Educativa</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>LEGO Mindstorms para Iniciantes</h3>
-                    <p>Como começar com o kit LEGO Mindstorms EV3 na robótica educativa.</p>
-                    <iframe src="https://www.youtube.com/embed/SNS9lbLLqyU" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Programação Visual com Scratch</h3>
-                    <p>Introdução à programação robótica usando linguagem visual.</p>
-                    <iframe src="https://www.youtube.com/embed/jXUZaf5D12A" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Competição de Robótica</h3>
-                    <p>Veja robôs competindo em desafios de seguir linha e labirinto.</p>
-                    <iframe src="https://www.youtube.com/embed/oWQK7DcHG8E" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <h2>Projetos Práticos</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>Robô Seguidor de Linha</h3>
-                    <p>Construa um robô que segue linhas usando sensores infravermelhos.</p>
-                    <iframe src="https://www.youtube.com/embed/VKkV-0bLqe4" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Braço Robótico Caseiro</h3>
-                    <p>Como construir um braço robótico usando servomotores e Arduino.</p>
-                    <iframe src="https://www.youtube.com/embed/pJ7ej-pNH9c" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Robô Controlado por Smartphone</h3>
-                    <p>Aprenda a controlar seu robô usando um aplicativo no celular.</p>
-                    <iframe src="https://www.youtube.com/embed/JbCGEgTbBF0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <h2>Robótica Avançada</h2>
-            <div class="video-grid">
-                <div class="video-item">
-                    <h3>Inteligência Artificial em Robótica</h3>
-                    <p>Como a IA está revolucionando o campo da robótica moderna.</p>
-                    <iframe src="https://www.youtube.com/embed/hRuBrTy5ECc" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Robôs Humaniodes</h3>
-                    <p>Conheça os mais avançados robôs humanoides do mundo.</p>
-                    <iframe src="https://www.youtube.com/embed/tf7IEVTDjng" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-item">
-                    <h3>Robótica Industrial</h3>
-                    <p>Como os robôs estão transformando a indústria moderna.</p>
-                    <iframe src="https://www.youtube.com/embed/k6GKKLlKJT0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <p>&copy; 2025 Site Robótica. Todos os vídeos pertencem aos seus respectivos criadores no YouTube.</p>
+    </footer>
 </body>
 </html> <!-- Fim do documento HTML -->
